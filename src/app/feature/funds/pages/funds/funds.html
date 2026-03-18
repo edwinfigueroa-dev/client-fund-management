@@ -1,3 +1,5 @@
+<p-toast />
+
 <div class="p-4 bg-white mb-4 rounded">
   <h2 class="text-xl font-medium">Fondos</h2>
 </div>
@@ -10,7 +12,7 @@
     </p-tablist>
     <p-tabpanels>
         <p-tabpanel value="0">
-            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-4">
+            <div class="flex flex-col gap-4 mt-4">
             @for (fund of availableFunds(); track fund.id) {
                 <app-fund-card
                 [fund]="fund"
@@ -26,7 +28,7 @@
             }
         </p-tabpanel>
         <p-tabpanel value="1">
-            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-4">
+            <div class="flex flex-col gap-4 mt-4">
             @for (fund of subscribedFunds(); track fund.id) {
                 <app-fund-card
                 [fund]="fund"
