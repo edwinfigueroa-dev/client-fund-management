@@ -1,0 +1,11 @@
+.main-container {
+    padding-top: 64px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.content {
+    padding: 1rem;
+    height: calc(100vh - 65px);
+    overflow-y: auto;
+}

@@ -1,0 +1,27 @@
+<aside
+    class="sidenav transition-all duration-300 scroll shadow z-50 bg-primary-600 text-white"
+    [ngClass]="isCollapsed() && !isHovered() ? 'w-0 px-0 sm:w-16 sm:px-2' : 'w-64 px-2'" (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+>
+    <ul class="mt-4 space-y-2">
+        @for (item of menuItems; track i; let i = $index) {
+        <li>
+            @if (!item.children) {
+            <a 
+                [routerLink]="item.route"
+                routerLinkActive="bg-primary-800 hover:bg-primary-800! text-white"
+                class="flex items-center p-2 rounded-md h-10  hover:bg-primary-300/40 hover:text-white transition-colors overflow-hidden text-ellipsis whitespace-nowrap"
+                (click)="onItemClicked()"
+            >
+                <div class="flex items-center" [ngClass]="isCollapsed() && !isHovered() ? 'w-full justify-center' : ''">
+                    <img [src]="item.icon" alt="icon-sidebar" />
+                </div>
+                @if (!isCollapsed() || isHovered()) {
+                <span class="ml-3 overflow-hidden text-ellipsis whitespace-nowrap">{{ item.label }}</span>
+                }
+            </a>
+            }
+        </li>
+        }
+    </ul>
+</aside>
