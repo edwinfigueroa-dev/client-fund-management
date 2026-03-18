@@ -1,3 +1,40 @@
-<pre>
-    {{ transactions() | json }}
-</pre>
+<div class="p-4 bg-white mb-4 rounded">
+  <h2 class="text-xl font-medium">Historial</h2>
+</div>
+
+@if(transactions().length === 0) {
+    <div class="p-4 bg-white mb-4 rounded">
+        <p>No se encontraron transacciones</p>
+    </div>
+
+} @else {
+    <div class="rounded bg-white p-4">
+        <p-table [value]="transactions()" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template #header>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Tipó</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Notificación</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-item>
+                <tr>
+                    <td>{{ item.fundName }}</td>
+                    <td>
+                        <span
+                        class="text-white px-3 py-1 text-sm font-semibold rounded-full"
+                        [class.bg-green-400]="item.type === 'SUBSCRIBE'"
+                        [class.bg-red-400]="item.type === 'CANCEL'">
+                        {{ item.type === 'SUBSCRIBE' ? 'Suscripción' : 'Cancelación' }}
+                        </span>
+                    </td>
+                    <td>{{ item.amount | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+                    <td>{{ item.date | date:'short' }}</td>
+                    <td>{{ item.notification }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+}

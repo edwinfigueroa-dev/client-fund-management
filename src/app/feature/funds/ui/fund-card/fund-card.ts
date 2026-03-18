@@ -9,11 +9,9 @@ import { Fund } from '@app/feature/funds/models/fund.model';
   styleUrl: './fund-card.scss',
 })
 export class FundCard {
-// 🔥 Inputs modernos (signals)
   fund = input.required<Fund>();
   mode = input<'available' | 'subscribed'>('available');
 
-  // 🔥 Outputs modernos
   subscribeEvent = output<Fund>();
   unsubscribeEvent = output<Fund>();
 
