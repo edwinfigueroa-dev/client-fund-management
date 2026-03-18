@@ -70,6 +70,12 @@ export class Sidebar {
     this.eventChangeStatusSidebar.emit(!this.isCollapsed());
   }
 
+  get containerClass() {
+    return this.isCollapsed() && !this.isHovered()
+      ? 'w-0 px-0 sm:w-16 sm:px-2'
+      : 'w-64 px-2';
+  }
+
   onMouseEnter() {
     if (this.isCollapsed()) this.eventChangeStatusHoverSidebar.emit(true);
   }
