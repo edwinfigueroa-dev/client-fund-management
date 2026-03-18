@@ -3,7 +3,8 @@
         <button (click)="toggleSidebar()" class="cursor-pointer hover:bg-primary-300/40 transition ease-in p-2 rounded-full">
             <img src="icons/menu.svg" alt="icon-menu">
         </button>
-        <span class="text-lg font-bold text-gray-100">Manejo de Fondos</span>
+        <span class="text-lg font-bold text-gray-100">Fondos</span>
     </div>
 
+    <div class="text-white">{{ balance() | currency : 'USD' : 'symbol' : '1.0-0' }}</div>
 </header>

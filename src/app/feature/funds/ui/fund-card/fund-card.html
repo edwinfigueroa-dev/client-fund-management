@@ -1,0 +1,43 @@
+<div class="bg-white rounded-2xl border p-5 flex flex-col justify-between hover:shadow-lg transition">
+
+  <!-- INFO -->
+  <div>
+
+    <h3 class="text-lg font-semibold text-gray-800">
+      {{ fund().name }}
+    </h3>
+
+    <p class="text-sm text-gray-500 mt-1">
+      {{ fund().category }}
+    </p>
+
+    <p class="text-md font-medium mt-3 text-gray-700">
+      {{ fund().minAmount | currency:'COP' }}
+    </p>
+
+  </div>
+
+  <!-- ACTION -->
+  <div class="mt-5">
+
+    @if (mode() === 'available') {
+
+      <button
+        class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer"
+        (click)="onSubscribe()">
+        Suscribirse
+      </button>
+
+    } @else {
+
+      <button
+        class="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition cursor-pointer"
+        (click)="onUnsubscribe()">
+        Cancelar
+      </button>
+
+    }
+
+  </div>
+
+</div>

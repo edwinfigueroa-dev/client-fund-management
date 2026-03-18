@@ -9,11 +9,7 @@ export class TransactionService {
   private _transactions = signal<Transaction[]>([]);
   transactions = this._transactions.asReadonly();
 
-  addTransaction(transaction: Transaction) {
+  add(transaction: Transaction) {
     this._transactions.update(v => [...v, transaction]);
-  }
-
-  getTransactions(): Transaction[] {
-    return this._transactions();
   }
 }

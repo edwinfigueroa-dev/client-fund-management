@@ -16,11 +16,11 @@ export class WalletService {
     return this._balance() >= amount;
   }
 
-  add(amount: number): void {
+  increase(amount: number): void {
     this._balance.update(balance => balance + amount);
   }
 
-  subtract(amount: number): void {
+  decrease(amount: number): void {
     this._balance.update(balance => balance - amount);
   }
 
