@@ -10,6 +10,6 @@ export class TransactionService {
   transactions = this._transactions.asReadonly();
 
   add(transaction: Transaction) {
-    this._transactions.update(v => [...v, transaction]);
+    this._transactions.update(v => [transaction, ...v]);
   }
 }

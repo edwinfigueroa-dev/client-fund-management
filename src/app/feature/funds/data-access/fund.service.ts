@@ -57,7 +57,7 @@ export class FundService {
     });
   }
 
-  unsubscribe(fund: Fund, notification: 'EMAIL' | 'SMS') {
+  unsubscribe(fund: Fund) {
     const isSubscribed = this._subscribedFunds().some(f => f.id === fund.id);
     if (!isSubscribed) {
       throw new Error('No está suscrito a este fondo');
@@ -65,6 +65,7 @@ export class FundService {
 
     this.walletService.increase(fund.minAmount);
     this._subscribedFunds.update(funds => funds.filter(f => f.id !== fund.id));
+    const notificationType = this.transactionService.transactions().find(t => t.fundId === fund.id)?.notification;
 
     this.transactionService.add({
       id: Date.now(),
@@ -73,7 +74,7 @@ export class FundService {
       type: 'CANCEL',
       amount: fund.minAmount,
       date: new Date(),
-      notification,
+      notification: notificationType || 'EMAIL',
     });
   }
 

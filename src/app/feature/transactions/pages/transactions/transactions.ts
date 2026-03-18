@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TransactionService } from '@app/feature/transactions/data-access/transaction.service';
 import { TableModule } from 'primeng/table';
 
@@ -11,5 +11,5 @@ import { TableModule } from 'primeng/table';
 })
 export class Transactions {
   private transactionService = inject(TransactionService);
-  transactions = computed(() => [...this.transactionService.transactions()].reverse());
+  transactions = this.transactionService.transactions;
 }
